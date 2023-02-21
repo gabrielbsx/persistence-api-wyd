@@ -10,7 +10,7 @@ export class FsDonationRepository implements DonationRepository {
   async send (donation: Donation): Promise<boolean> {
     const randomFileNameImportDonate = `${randomUUID()}.txt`
     writeFileSync(join(FsDonationRepository._importDonate, randomFileNameImportDonate), `${donation.username} ${donation.donate}`)
-    for (const item of donation.items) {
+    for (const item of donation.items ?? []) {
       const randomFileNameImportItem = `${randomUUID()}.txt`
       const effects = item.effects.map(({ effect, value }) => `${effect} ${value}`).join(' ')
       writeFileSync(join(FsDonationRepository._importItem, randomFileNameImportItem), `${donation.username} ${item.index} ${effects}`)

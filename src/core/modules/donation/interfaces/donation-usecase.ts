@@ -3,7 +3,7 @@ import { type Item } from 'core/domain/entities/item'
 export interface DonationUseCaseData {
   username: string
   donate: number
-  items: Item[]
+  items?: Item[]
 }
 
 export interface DonationUseCaseResponse {

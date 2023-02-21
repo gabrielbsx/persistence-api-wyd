@@ -8,7 +8,7 @@ import { type DonationUseCase } from './interfaces/donation-usecase'
 export class DonationController implements Controller {
   constructor (private readonly donationUseCase: DonationUseCase) {}
   async handle (request: Request): Promise<Response<DonationResponse>> {
-    const userUpdated = await this.donationUseCase.execute(request.body)
-    return ok(userUpdated)
+    const isDonationSended = await this.donationUseCase.execute(request.body)
+    return ok(isDonationSended)
   }
 }
