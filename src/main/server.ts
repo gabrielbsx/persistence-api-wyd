@@ -1,8 +1,10 @@
-import { ExpressControllerAdapter } from 'adapters/http/express'
+import { ExpressControllerAdapter, ExpressMiddlewareAdapter } from 'adapters/http/express'
 import express, { type Application } from 'express'
 import { createUserFactory } from './factories/create-user-factory'
 import { donationFactory } from './factories/donation-factory'
+import { isAuthenticatedFactory } from './factories/is-authenticated-factory'
 import { updateUserFactory } from './factories/update-user-factory'
+import { config as configDotEnv } from 'dotenv'
 
 class Server {
   static serverInstance: Application
@@ -15,6 +17,7 @@ class Server {
   middlewares (): void {
     Server.serverInstance.use(express.json())
     Server.serverInstance.use(express.urlencoded({ extended: true }))
+    Server.serverInstance.use(ExpressMiddlewareAdapter(isAuthenticatedFactory()))
   }
 
   routes (): void {
@@ -24,9 +27,9 @@ class Server {
   }
 
   bootstrap (): void {
+    configDotEnv()
     this.middlewares()
     this.routes()
-    this.start()
   }
 
   start (): void {
@@ -38,3 +41,4 @@ class Server {
 
 const server = new Server()
 server.bootstrap()
+server.start()
