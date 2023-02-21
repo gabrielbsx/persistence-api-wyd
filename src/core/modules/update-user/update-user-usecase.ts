@@ -15,7 +15,7 @@ export class UpdateUserUseCaseImpl implements UpdateUserUseCase {
       throw new Error('User not updated')
     }
     return {
-      username
+      isUpdated: isUserUpdated
     }
   }
 }

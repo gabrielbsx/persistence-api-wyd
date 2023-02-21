@@ -4,5 +4,5 @@ export interface UpdateUserRequest {
 }
 
 export interface UpdateUserResponse {
-  username: string
+  isUpdated: boolean
 }

@@ -4,7 +4,7 @@ export interface UpdateUserUseCaseData {
 }
 
 export interface UpdateUserUseCaseResponse {
-  username: string
+  isUpdated: boolean
 }
 
 export interface UpdateUserUseCase {
