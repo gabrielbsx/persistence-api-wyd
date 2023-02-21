@@ -16,7 +16,6 @@ export class DonationUseCaseImpl implements DonationUseCase {
     if (isNil(donationUseCaseData.donate)) {
       throw new Error('Donate is required')
     }
-    console.log(donationUseCaseData.items)
     const items = pipe(
       tryCatch(
         (items) => {
