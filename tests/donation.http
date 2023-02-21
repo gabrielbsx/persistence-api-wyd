@@ -1,0 +1,27 @@
+POST http://localhost:3000/donation HTTP/1.1
+content-type: application/json
+Authorization: Basic RAMDAMDAM
+
+{
+    "username": "teste",
+    "donate": 100,
+    "items": [
+        {
+            "index": 412,
+            "effects": [
+                {
+                    "effect": 10,
+                    "value": 20
+                },
+                {
+                    "effect": 30,
+                    "value": 40
+                },
+                {
+                    "effect": 50,
+                    "value": 60
+                }
+            ]
+        }
+    ]
+}

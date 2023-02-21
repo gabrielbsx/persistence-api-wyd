@@ -1,0 +1,8 @@
+PUT http://localhost:3000/update-user HTTP/1.1
+content-type: application/json
+Authorization: Basic RAMDAMDAM
+
+{
+    "username": "testando1",
+    "password": "hoho"
+}

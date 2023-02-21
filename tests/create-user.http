@@ -1,0 +1,8 @@
+POST http://localhost:3000/create-user HTTP/1.1
+content-type: application/json
+Authorization: Basic RAMDAMDAM
+
+{
+    "username": "testando1",
+    "password": "testando1"
+}
