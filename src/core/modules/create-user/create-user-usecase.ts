@@ -11,7 +11,7 @@ export class CreateUserUseCaseImpl implements CreateUserUseCase {
     }
     const { username, password } = createUserUseCaseData
     const user = await this.userRepository.create({ username, password })
-    if (user) {
+    if (!user) {
       throw new Error('User not created')
     }
     return {
