@@ -10,20 +10,20 @@ void readAndExecuteImportFilesOnFolder(std::string folder, std::string importTyp
     std::ifstream importFile(entry.path());
     if (!importFile.is_open())
     {
-      std::cout << "Error opening file" << entry.path() << "\n";
+      std::cout << "Error opening file" << entry.path() << '\n';
       continue;
     }
     std::string importText((std::istreambuf_iterator<char>(importFile)), std::istreambuf_iterator<char>());
     importFile.close();
     if (importText.empty())
     {
-      std::cout << "File is empty" << entry.path() << "\n";
+      std::cout << "File is empty" << entry.path() << '\n';
       continue;
     }
     std::istringstream iss(importText);
     std::string username, password;
     iss >> username >> password;
-    std::cout << username << " " << password << "\n";
+    std::cout << username << " " << password << '\n';
     if (importType == "import-password")
     {
     }
@@ -33,7 +33,7 @@ void readAndExecuteImportFilesOnFolder(std::string folder, std::string importTyp
     else
     {
       std::cout << "Unknown import type"
-                << "\n";
+                << '\n';
     }
     return;
   }
