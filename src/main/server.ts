@@ -1,4 +1,7 @@
-import { ExpressControllerAdapter, ExpressMiddlewareAdapter } from 'adapters/http/express'
+import {
+  ExpressControllerAdapter,
+  ExpressMiddlewareAdapter
+} from 'adapters/http/express'
 import express, { type Application } from 'express'
 import { createUserFactory } from './factories/create-user-factory'
 import { donationFactory } from './factories/donation-factory'
@@ -17,13 +20,24 @@ class Server {
   middlewares (): void {
     Server.serverInstance.use(express.json())
     Server.serverInstance.use(express.urlencoded({ extended: true }))
-    Server.serverInstance.use(ExpressMiddlewareAdapter(isAuthenticatedFactory()))
+    Server.serverInstance.use(
+      ExpressMiddlewareAdapter(isAuthenticatedFactory())
+    )
   }
 
   routes (): void {
-    Server.serverInstance.post('/create-user', ExpressControllerAdapter(createUserFactory()))
-    Server.serverInstance.put('/update-user', ExpressControllerAdapter(updateUserFactory()))
-    Server.serverInstance.post('/donation', ExpressControllerAdapter(donationFactory()))
+    Server.serverInstance.post(
+      '/create-user',
+      ExpressControllerAdapter(createUserFactory())
+    )
+    Server.serverInstance.put(
+      '/update-user',
+      ExpressControllerAdapter(updateUserFactory())
+    )
+    Server.serverInstance.post(
+      '/donation',
+      ExpressControllerAdapter(donationFactory())
+    )
   }
 
   bootstrap (): void {
