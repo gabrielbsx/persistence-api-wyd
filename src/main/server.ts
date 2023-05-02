@@ -27,15 +27,15 @@ class Server {
 
   routes (): void {
     Server.serverInstance.post(
-      '/create-user',
+      '/users',
       ExpressControllerAdapter(createUserFactory())
     )
     Server.serverInstance.put(
-      '/update-user',
+      '/users',
       ExpressControllerAdapter(updateUserFactory())
     )
     Server.serverInstance.post(
-      '/donation',
+      '/donate',
       ExpressControllerAdapter(donationFactory())
     )
   }
