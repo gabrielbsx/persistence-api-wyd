@@ -18,8 +18,12 @@ export class IsAuthenticatedMiddleware implements Middleware {
     if (type.toLowerCase() !== 'basic') {
       return badRequest({ message: 'Invalid authorization type' })
     }
-    if (token !== process.env.BASIC_TOKEN as string) {
-      return badRequest({ message: 'Invalid token' })
+    const [username, password] = Buffer.from(token, 'base64').toString().split(':')
+    if (username !== process.env.BASIC_USERNAME) {
+      return badRequest({ message: 'Invalid username' })
+    }
+    if (password !== process.env.BASIC_PASSWORD) {
+      return badRequest({ message: 'Invalid password' })
     }
     return ok({ message: 'Authenticated' })
   }
